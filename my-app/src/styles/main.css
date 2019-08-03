@@ -1,0 +1,132 @@
+body, html{
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+h1{
+  line-height: 2vh;
+  font-size: 3vh;
+}
+
+h2{
+  line-height: 1vh;
+  font-size: 2vh;
+}
+
+p{
+  line-height: 1vh;
+  font-size: 2vh;
+}
+
+ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li{
+  height: 3.2vh;
+}
+
+input{
+  line-height: 1vh;
+  font-size: 2vh;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  height: 1.5vh;
+}
+
+.wrapper {
+  display: grid;
+  height: 100vh;
+  width: 100vw;
+  grid-template-columns: 10fr 10fr;
+  grid-template-rows: 5vh 95vh;
+  grid-template-areas:
+    "header header"
+    "input output";
+  color: var(--shippo_black);
+}
+
+.header {
+  grid-area: header;
+  background: white;
+}
+
+.icon{
+  height: 4vh;
+  margin-top: 0.5vh;
+  margin-left: 1vw;
+}
+
+.input {
+  grid-area: input;
+  background: var(--shippo_grey);
+  color: white;
+}
+
+.output {
+  grid-area: output;
+  background: white;
+}
+
+.paddingHandler{
+  padding: 1vh 1vw 1vh 1vw;
+}
+
+.filter{
+  filter: invert(100%);
+}
+
+.filterTransition{
+  -webkit-transition: 400ms -webkit-filter linear;
+  -moz-transition: 400ms -moz-filter linear;
+  -moz-transition: 400ms filter linear;
+  -ms-transition: 400ms -ms-filter linear;
+  -o-transition: 400ms -o-filter linear;
+  transition: 400ms filter linear, 400ms -webkit-filter linear;
+}
+
+.filterIcon{
+  position: fixed;
+  top: 0; 
+  right: 0.5vw;
+  margin-right: 1vw;
+  margin-top: 0.5vh;
+  font-size: 4vh;
+  cursor: pointer;
+}
+
+.card{
+  padding: 2px;
+  border: 2px solid black;
+  position: relative;
+  overflow: auto
+}
+
+.button{
+  color: white;
+  background: var(--shippo_black);
+  border-radius: 5px;
+  padding: 5%;
+  line-height: 2vh;
+  text-align: center;
+  cursor: pointer;
+  height: 2vh;
+}
+
+.button:hover{
+  color: #7eff7e;
+  background: var(--shippo_dark);
+}
+
+.itemCard{
+  margin: 5px;
+  padding: 5px;
+  background: var(--shippo_black);
+  color: white;
+}
