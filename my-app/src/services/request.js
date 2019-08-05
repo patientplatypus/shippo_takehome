@@ -28,7 +28,6 @@ export const request = (data) => {
       reject(error)
     })
   })
-
   
 } 
 

@@ -39,17 +39,19 @@ class InputBox extends Component{
                         </Item>
                         <Item/>
                         <Item flex='5'>
-                          {renderIf(subObj[key]=='')(
+                          {renderIf(!this.props.dummyFlag&&inputObjKey=='address_to')(
                             <input
-                              onChange={(e)=>{this.props.stateHandler(key, e.target.value)}}
+                              onChange={(e)=>{
+                                this.props.inputAddressHandler({[key]: e.target.value})
+                              }}
                             />
                           )}
-                          {renderIf(subObj[key]!=''&&inputObjKey!='address_to')(
+                          {renderIf(inputObjKey!='address_to')(
                             <span style={{fontStyle: 'italic'}}>
                               *fake* {subObj[key]}
                             </span>
                           )}
-                          {renderIf(subObj[key]!=''&&inputObjKey=='address_to')(
+                          {renderIf(this.props.dummyFlag&&inputObjKey=='address_to')(
                             <span>
                               {subObj[key]}
                             </span>

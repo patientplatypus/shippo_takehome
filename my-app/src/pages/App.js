@@ -64,7 +64,8 @@ class App extends Component{
         "weight": "1",
         "mass_unit": "lb"
       },
-    }
+    }, 
+    dummyFlag: false //bug fix: need to have flag for usingDummy, as checking against '' will break when inputting data
   }
 
   useDummyData(){
@@ -72,6 +73,7 @@ class App extends Component{
     for (var key in this.state.inputColumns.address_to){
       newState['inputColumns']['address_to'][key] = this.state.address_to[key];
     }
+    newState['dummyFlag'] = true;
     this.setState(newState);
   }
 
@@ -81,6 +83,18 @@ class App extends Component{
       newState[key] = objRet[key];
     })
     this.setState(newState)
+  }
+
+  inputAddressHandler(objRet){
+    //input errors were caused by data reorg of InputColumns and changing StateHandler to MultiStateHandler -- this is a quick fix, but should ideally be integrated into one state handler function
+    console.log('#### inside inputAddressHandler and objRet: ', objRet)
+    let newState = Object.assign({}, this.state);
+    Object.keys(objRet).forEach(key=>{
+      newState['inputColumns']['address_to'][key] = objRet[key];
+    })
+    this.setState(newState, ()=>{
+      console.log('#### after setState in inputAddressHandler and state: ', this.state)
+    })
   }
 
   render(){
@@ -105,6 +119,8 @@ class App extends Component{
           inputColumns={this.state.inputColumns}
           useDummyData={()=>this.useDummyData()}
           multiStateHandler={(objRet)=>{this.multiStateHandler(objRet)}}
+          inputAddressHandler={(objRet)=>{this.inputAddressHandler(objRet)}}
+          dummyFlag = {this.state.dummyFlag}
         />
         <OutputBox
           response_status={this.state.response_status}
