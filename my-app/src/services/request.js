@@ -11,7 +11,7 @@ export const request = (data) => {
     "parcels": [data.parcel]
   }
 
-  console.log('value of dataSend: ', dataSend)
+  console.log('#### value of dataSend: ', dataSend)
 
   return new Promise((resolve, reject)=>{
     axios.post('https://api.goshippo.com/shipments/', dataSend, {
